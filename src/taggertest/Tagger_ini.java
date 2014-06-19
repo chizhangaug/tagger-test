@@ -17,7 +17,7 @@ public class Tagger_ini {
 		
 		FileOutputStream fos = null;
 		fos = new FileOutputStream("Files/output.txt");
-		int lofs = 3;
+		int lofs = 34;
 		
 		// TODO Auto-generated method stub
 		MaxentTagger tagger = new MaxentTagger(
@@ -26,13 +26,13 @@ public class Tagger_ini {
 		
 
 		 
-		String sample = "This is an easy sentence.";
+		String sample = "Joseph M. Blanchard , 37 , vice president , engineering ; Malcolm A. Hammerton";
 		
-        // The tagged string
-        //String tagged = tagger.tagString(sample);
+         //The tagged string
+        String tagged = tagger.tagString(sample);
         
         // Output the result
-        //System.out.println(tagged);
+        System.out.println(tagged);
         String[] str = { "-printPCFGkBest", "3"};
       //  String[] str = {};//"-tokenized", 
         //		"-tagSeparator", "_", "-tokenizerFactory ", "edu.stanford.nlp.process.WhitespaceTokenizer", "-tokenizerMethod", "newCoreLabelTokenizerFactory"};
@@ -59,7 +59,7 @@ public class Tagger_ini {
 				sample1 += (char)c;
 			}
 			
-			
+			if (sample1 == "\n") continue;
 			
 	        
 	 /*       //String[] words = { "This", "is", "an", "easy", "sentence", "." };
@@ -114,7 +114,7 @@ public class Tagger_ini {
 	        System.setErr(out); 
 	        
 	        byte[] b1 = sample1.getBytes();
-	        byte[] b2 = "\r\n".getBytes();
+	        byte[] b2 = "\n".getBytes();
 	        byte[] b3 = prop.getBytes();
 	        
 	        fos.write(b1);
@@ -122,9 +122,9 @@ public class Tagger_ini {
 	        fos.write(b3);
 	        fos.write(b2);
 	        
-	//        System.out.println(count);
-	//        System.out.println(content);
-	  //      System.out.println(prop);
+	        System.out.println(count);
+	  //      System.out.println(content);
+	        System.out.println(prop);
 	        
 	        count ++;
 		}
@@ -133,6 +133,11 @@ public class Tagger_ini {
         inp.close();
         System.out.println("Finished");
         
+      
+        Tree tree = lp.parse("Time , the largest newsweekly , had average circulation of below the $ 2.29 billion value United Illuminating places on its bid Rowe also noted that political concerns also worried New England Electric .");  
+
+       
+        tree.pennPrint();
   //      TreebankLanguagePack tlp = new PennTreebankLanguagePack();
   //      GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
   //      GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);
